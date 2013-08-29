@@ -4,23 +4,23 @@
 <head>
 
     <meta charset="utf-8">
-    
+
     <title>Preview</title>
 <!--     <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet"> -->
     <link rel="stylesheet" media="screen" href="css/preview.css">
-    
+
 </head>
 <body>
 
     <div id='tools'>
 
-        <form action='/' method='get'>
+        <form action='/newsfront-preview/' method='get'>
             <input id='url' name='url' type='text' placeholder="f.eks. www.front.no" value=''>
             <input type='submit' value='Go' id='go'>
 
         </form>
 
-        
+
     </div>
 
 
@@ -84,11 +84,24 @@
 
 </section>
 
-
-
 <script type='text/javascript' src='js/preview.min.js'></script>
-
+<script type='text/javascript' src='http://code.jquery.com/jquery-1.10.2.js'></script>
+<script type='text/javascript'>
+    (function () {
+      function getParameterByName(name) {
+        var regex = new RegExp('[\\?&]' + name + '=([^&#]*)'),
+          results = regex.exec(location.search);
+        return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+      }
+      var url = getParameterByName('url');
+      if (url.length > 0) {
+        if(url.substr(0,7) === 'http://') {
+            url = url.substr(7);
+        }
+        $('iframe').attr('src', 'http://' + url);
+      }
+    })();
+</script>
 
 </body>
 </html>
-
