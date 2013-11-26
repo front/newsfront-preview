@@ -1,107 +1,59 @@
 <!doctype html>
-
 <html lang="en-us">
 <head>
-
     <meta charset="utf-8">
-
     <title>Preview</title>
-<!--     <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet"> -->
     <link rel="stylesheet" media="screen" href="css/preview.css">
-
 </head>
 <body>
-
     <div id='tools'>
-
         <form action='/newsfront-preview/' method='get'>
             <input id='url' name='url' type='text' placeholder="f.eks. www.front.no" value=''>
             <input type='submit' value='Go' id='go'>
-
         </form>
-
-
     </div>
-
-
-
     <section id='devices'>
-
-
-
         <div class='deviceWrap iphone-portrait'>
             <div class='device' style='width: 320px; height: 416px; padding-top: 20px;padding-bottom: 44px;'>
-
                 <div class='flashingTop' style='height: 20px; width: 320px'><span class='time'></span></div>
-
                 <div class='flashingBottom' style='height: 44px'></div>
-
-
                 <iframe src='about:blank' id='iphone-portrait' style=''></iframe>
-
-
             </div><!-- /device -->
         </div><!-- /deviceWrap -->
-
         <div class='deviceTitle'><a href='/?url=about:blank&amp;device=iphone-portrait'><em>iPhone 3+4 portrait</em> 320 x 480</a></div>
-
-
-
-
-
         <div class='deviceWrap android-380x685-portrait'>
             <div class='device' style='width: 380px; height: 665px; padding-top: 20px;'>
-
                 <div class='flashingTop' style='height: 20px; width: 380px'><span class='time'></span></div>
-
-
-
                 <iframe src='about:blank' id='android-380x685-portrait' style=''></iframe>
-
-
             </div><!-- /device -->
         </div><!-- /deviceWrap -->
-
         <div class='deviceTitle'><a href='/?url=about:blank&amp;device=android-380x685-portrait'><em>Android (Samsung Galaxy) portrait</em> 380 by 685 <em style='color: #aaa;'>(equivalent desktop resolution)</em></a></div>
-
-
-
         <div class='deviceWrap ipad-portrait'>
             <div class='device' style='width: 768px; height: 900px; padding-top: 124px;'>
-
                 <div class='flashingTop' style='height: 124px; width: 768px'><span class='time'></span></div>
-
-
-
                 <iframe src='about:blank' id='ipad-portrait' style=''></iframe>
-
-
             </div>
         </div>
-
         <div class='deviceTitle'><a href='/?url=about:blank&amp;device=ipad-portrait'><em>iPad portrait</em> 768 x 1024</a></div>
+    </section>
 
-
-</section>
-
-<script type='text/javascript' src='js/preview.min.js'></script>
-<script type='text/javascript' src='http://code.jquery.com/jquery-1.10.2.js'></script>
-<script type='text/javascript'>
-    (function () {
-      function getParameterByName(name) {
-        var regex = new RegExp('[\\?&]' + name + '=([^&#]*)'),
-          results = regex.exec(location.search);
-        return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
-      }
-      var url = getParameterByName('url');
-      if (url.length > 0) {
-        if(url.substr(0,7) === 'http://') {
-            url = url.substr(7);
-        }
-        $('iframe').attr('src', 'http://' + url);
-      }
-    })();
-</script>
-
+    <script type='text/javascript' src='js/preview.min.js'></script>
+    <script type='text/javascript' src='http://code.jquery.com/jquery-1.10.2.js'></script>
+    <script type='text/javascript'>
+        (function () {
+          function getParameterByName(name) {
+            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)'),
+              results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+          }
+          var url = getParameterByName('url');
+          if (url.length > 0) {
+            if(url.substr(0,7) === 'http://') {
+                url = url.substr(7);
+            }
+            $('iframe').attr('src', 'http://' + url);
+          }
+        })();
+    </script>
 </body>
 </html>
